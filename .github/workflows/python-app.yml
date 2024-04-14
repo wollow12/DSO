@@ -24,6 +24,5 @@ jobs:
       with:
         python-version: "3.10"
 
-    - uses: pypa/gh-action-pip-audit@v1.0.8
-      with:
-       local: true
+    - name: 'Dependency Review'
+      uses: actions/dependency-review-action@v4
