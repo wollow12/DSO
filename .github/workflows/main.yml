@@ -1,0 +1,22 @@
+name: CI with Docker
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  delivery:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    
+      - name: Clone github repository
+        uses: actions/checkout@v4
+
+      - name: audit
+        uses: pypa/gh-action-pip-audit@v1.0.0
+        with:
+          inputs: requirements.txt
