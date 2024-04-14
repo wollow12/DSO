@@ -1,5 +1,5 @@
 # Stage 1: Build the Python Flask application using Gunicorn
-FROM python:slim
+FROM python:alpine3.19
 WORKDIR /app
 RUN useradd -ms /bin/bash python
 USER python
