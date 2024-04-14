@@ -22,6 +22,6 @@ jobs:
     - name: Set up Python 3.10
       uses: actions/setup-python@v5
 
-    - uses: safety/safety@2.3.4
-      with:
-        api-key: ${{secrets.SAFETY_API}}
+    - uses: pyupio/safety-action@v1
+        with:
+          api-key: ${{ secrets.SAFETY_API }}
