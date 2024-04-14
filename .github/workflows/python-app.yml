@@ -22,8 +22,4 @@ jobs:
     - name: Set up Python 3.10
       uses: actions/setup-python@v5
 
-    - uses: pypa/gh-action-pip-audit@v1.0.8
-      with:
-      # NOTE: this can be `.`, for the current directory
-       inputs: ./requirements.txt
-       summary: true
+    - uses: safety/safety@2.3.4
