@@ -1,7 +1,7 @@
 # Stage 1: Build the Python Flask application using Gunicorn
 FROM python:alpine3.19
 WORKDIR /app
-RUN useradd -ms /bin/bash python
+RUN adduser --disabled-password python
 USER python
 
 # Copy Python dependencies file and install dependencies
