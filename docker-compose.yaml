@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+
+  app2:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      
+  nginx:
+   image: nginx:latest
+   volumes:
+      - ./flask.conf:/etc/nginx/conf.d/default.conf
+   depends_on:
+      - app1
+   ports:
+      - "80:80"

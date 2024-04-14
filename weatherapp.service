@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve weatherapp
+After=network.target
+
+[Service]
+User=sasha
+Group=www-data
+WorkingDirectory=/home/sasha/webapp
+Environment="PATH=/home/sasha/webapp/webappenv/bin"
+ExecStart=/home/sasha/webapp/webappenv/bin/gunicorn --bind 0.0.0.0:9090 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
