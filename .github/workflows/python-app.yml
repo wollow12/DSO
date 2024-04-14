@@ -26,5 +26,4 @@ jobs:
 
     - uses: pypa/gh-action-pip-audit@v1.0.8
       with:
-        # NOTE: this can be `.`, for the current directory
-        inputs: ./requirements.txt
+       local: true
