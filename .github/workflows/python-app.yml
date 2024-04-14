@@ -25,3 +25,9 @@ jobs:
     - uses: pyupio/safety-action@v1
       with:
         api-key: ${{ secrets.SAFETY_API_KEY }}
+
+    - name: Build and scan image
+      uses: dentsusoken/build-and-scan-image@main
+      with:
+        tag: sashapo12/app-after-pipeline:tester
+        path: "."
