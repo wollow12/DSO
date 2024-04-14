@@ -1,6 +1,7 @@
 # Stage 1: Build the Python Flask application using Gunicorn
 FROM python:slim
 WORKDIR /app
+USER python
 
 # Copy Python dependencies file and install dependencies
 COPY requirements.txt .
