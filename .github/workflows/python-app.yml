@@ -27,7 +27,7 @@ jobs:
         api-key: ${{ secrets.SAFETY_API_KEY }}
 
     - name: Run Pysa Action
-      uses: facebook/pysa-action@1
+      uses: facebook/pysa-action@0.0.1
       with:
         repo-directory: './'
         requirements-path: 'requirements.txt'
