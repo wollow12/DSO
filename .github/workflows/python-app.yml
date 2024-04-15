@@ -26,13 +26,8 @@ jobs:
       with:
         api-key: ${{ secrets.SAFETY_API_KEY }}
 
-    - name: Run Pysa Action
-      uses: facebook/pysa-action@0.0.1
-      with:
-        repo-directory: './'
-        requirements-path: 'requirements.txt'
-        infer-types: true
-        include-default-sapp-filters: true
+    - name: GitHub Action for pylint           
+      uses: cclauss/GitHub-Action-for-pylint@0.7.0
 
     - name: Build and scan image
       uses: dentsusoken/build-and-scan-image@main
