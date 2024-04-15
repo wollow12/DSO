@@ -28,6 +28,8 @@ jobs:
 
     - name: Codacy Analysis CLI          
       uses: codacy/codacy-analysis-cli-action@v4.4.0
+      with:
+        max-allowed-issues: 0
 
     - name: Build and scan image
       uses: dentsusoken/build-and-scan-image@main
