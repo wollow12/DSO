@@ -26,8 +26,10 @@ jobs:
       with:
         api-key: ${{ secrets.SAFETY_API_KEY }}
 
-    - name: GitHub Action for pylint           
-      uses: cclauss/GitHub-Action-for-pylint@0.7.0
+    - uses: Silleellie/pylint-github-action@v2
+      with:
+       lint-path: src
+       python-version: 3.11
 
     - name: Build and scan image
       uses: dentsusoken/build-and-scan-image@main
