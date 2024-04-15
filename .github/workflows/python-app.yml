@@ -28,7 +28,7 @@ jobs:
 
     - uses: Silleellie/pylint-github-action@v2
       with:
-       lint-path: src
+       lint-path: .
        python-version: 3.11
 
     - name: Build and scan image
