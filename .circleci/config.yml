@@ -4,34 +4,16 @@ version: 2.1
 orbs:
   python: circleci/python@2
 jobs:
-  test-python:
-    # Install dependencies and run tests
-    docker:
-      - image: cimg/python:3.8-node
+  build_and_test: # this can be any name you choose
+    executor: python/default # use the default executor defined within the orb
     steps:
-      - checkout
-      - python/install-packages
+      - checkout # checkout source code
+      - python/install-packages:
+          pkg-manager: pip
       - run:
           name: Run tests
-          command: pytest --junitxml=junit.xml || ((($? == 5)) && echo 'Did not find any tests to run.')
-      - store_test_results:
-          path: junit.xml
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
-    docker:
-      - image: cimg/base:stable
-    steps:
-      # Replace this with steps to deploy to users
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
-      - run:
-          name: found github actions config
-          command: ':'
-workflows:
-  build-and-test:
-    jobs:
-      - test-python
-    # - deploy:
-    #     requires:
-    #       - test-python
+          command: python check_webapp_reachability.py
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
