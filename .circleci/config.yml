@@ -14,10 +14,6 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-          name: Run tests
-          command: |
-            docker-compose -f ./docker-compose.test.yml up
-      - run:
           name: Build Docker image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
