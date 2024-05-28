@@ -11,6 +11,9 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - run:
+          name: Run application
+          command: python weather_app.py
+      - run:
           name: Run tests
           command: python check_webapp_reachability.py
       - persist_to_workspace:
