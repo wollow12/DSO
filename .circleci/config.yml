@@ -19,6 +19,3 @@ workflows:
   build_test_deploy:
     jobs:
       - build_and_test
-      - deploy:
-          requires:
-            - build_and_test # only deploy if the build_and_test job has completed
