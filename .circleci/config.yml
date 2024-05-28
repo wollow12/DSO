@@ -27,7 +27,8 @@ jobs:
       - run:
           name: Push to GITLAB
           command: |
-            docker login registry.gitlab.com
+#            docker login registry.gitlab.com
+            echo "$GITLAB_TOKEN" | docker login registry.gitlab.com -u 44kpuk44 --password-stdin
             docker build -t registry.gitlab.com/44kpuk44/circleci .
             docker push registry.gitlab.com/44kpuk44/circleci
 #  test: # this can be any name you choose
