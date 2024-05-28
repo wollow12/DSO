@@ -2,7 +2,7 @@
 # Stacks detected: cicd:github-actions:.github/workflows,deps:python:.
 version: 2.1
 orbs:
-  python: circleci/python@2.0.3
+  python: circleci/python@2
 jobs:
   build_and_test: # this can be any name you choose
     executor: python/default # use the default executor defined within the orb
