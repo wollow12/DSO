@@ -4,7 +4,7 @@ import requests
 
 class TestWebsiteReachability(unittest.TestCase):
     def test_website_reachable(self):
-        url = 'http://51.20.115.143/'
+        url = 'http://127.0.0.1/'
 
         try:
             response = requests.get(url)
