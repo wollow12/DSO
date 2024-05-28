@@ -23,7 +23,7 @@ jobs:
           fail_only: false
           failure_message: "**${CIRCLE_USERNAME}**'s build: **${CIRCLE_JOB}** failed."
           success_message: "**${CIRCLE_USERNAME}** deployed api to prod."
-          webhook: https://discordapp.com/api/webhooks/1244986480221356114/WZmiTBOvkY4r7LsgCy2JEI_YlBPKg5VeOWmyadlEnNyFqoEOqqd6inBrpqPOmZMxvgv_
+          webhook: "${DISCORD_STATUS_WEBHOOK}"
 
             
 #  test: # this can be any name you choose
