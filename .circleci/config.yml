@@ -13,6 +13,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout # checkout source code
+      - python/install-packages:
+          pkg-manager: pip
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
@@ -20,8 +22,6 @@ jobs:
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             docker build -t $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG .
-      - python/install-packages:
-          pkg-manager: pip
       - run:
           name: Run tests
           command: python check_webapp_reachability.py
