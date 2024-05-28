@@ -26,10 +26,10 @@ jobs:
           webhook: "${DISCORD_STATUS_WEBHOOK}"
       - run:
           name: Push to GITLAB
-          script:
-          - echo "$GITLAB_TOKEN" | docker login registry.gitlab.com/44kpuk44/circleci -u 44kpuk44 --password-stdin
-          - docker build -t registry.gitlab.com/44kpuk44/circleci .
-          - docker push registry.gitlab.com/44kpuk44/circleci
+          command: |
+            docker login registry.gitlab.com
+            docker build -t registry.gitlab.com/44kpuk44/circleci .
+            docker push registry.gitlab.com/44kpuk44/circleci
 #  test: # this can be any name you choose
 #    executor: python/default # use the default executor defined within the orb
 #    steps:
