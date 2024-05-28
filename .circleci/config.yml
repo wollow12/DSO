@@ -23,7 +23,7 @@ jobs:
             docker build -t $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG .
       - run:
           name: Run tests
-          command: python check_webapp_reachability.py
+          command: python2 check_webapp_reachability.py
       - persist_to_workspace:
           root: ~/project
           paths:
