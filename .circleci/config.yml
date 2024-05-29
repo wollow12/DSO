@@ -14,16 +14,21 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: true
-      - run:
+ #     - run:
+ #         name: Build Docker image
+ #         command: |
+ #           TAG=0.1.$CIRCLE_BUILD_NUM
+ #           docker build -t $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG .
+       - run:
           name: Build Docker image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG .
-      - discord/status:
-          fail_only: false
-          failure_message: "**${CIRCLE_USERNAME}**'s build: **${CIRCLE_JOB}** failed."
-          success_message: "**${CIRCLE_USERNAME}** deployed api to prod."
-          webhook: "${DISCORD_STATUS_WEBHOOK}"
+            docker compose up -d
+  #    - discord/status:
+  #        fail_only: false
+  #        failure_message: "**${CIRCLE_USERNAME}**'s build: **${CIRCLE_JOB}** failed."
+  #        success_message: "**${CIRCLE_USERNAME}** deployed api to prod."
+  #        webhook: "${DISCORD_STATUS_WEBHOOK}"
       - run:
           name: Push to GITLAB
           command: |
