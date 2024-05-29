@@ -23,7 +23,7 @@ jobs:
           name: Run Docker image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker run -it -d $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG 
+            docker run -d -it -p 5000:5000 --name app $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG 
       - run:
           name: Push to GITLAB
           command: |
