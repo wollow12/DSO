@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker compose up -d
+            docker-compose up -d
       - run:
           name: Push to GITLAB
           command: |
