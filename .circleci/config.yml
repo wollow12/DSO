@@ -28,7 +28,7 @@ jobs:
           name: Run test image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker exec -it app ./app/check_webapp_reachability.py
+            docker exec -it app /app/check_webapp_reachability.py
       - run:
           name: Push to GITLAB
           command: |
