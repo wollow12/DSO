@@ -1,18 +1,12 @@
-# start by pulling the python image
-FROM python:3.9-slim
-
-# copy the requirements file into the image
-COPY ./requirements.txt /app/requirements.txt
-
-# switch working directory
+FROM python:alpine3.19
 WORKDIR /app
 
-# install the dependencies and packages in the requirements file
-RUN pip install -r requirements.txt
+# Copy Python dependencies file and install dependencies
+COPY requirements.txt .
 
-# copy every content from the local file to the image
-COPY . /app
+RUN pip install --no-cache-dir -r requirements.txt
 
-# configure the container to run in an executed manner
-ENTRYPOINT [ "python" ]
-CMD ["weather_app.py" ]
+# Copy Flask application
+COPY . .
+
+CMD ["python", "weather_app.py]
