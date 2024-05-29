@@ -1,15 +1,18 @@
-# Stage 1: Build the Python Flask application using Gunicorn
-FROM python:alpine3.19
+# start by pulling the python image
+FROM python:3.9-slim
+
+# copy the requirements file into the image
+COPY ./requirements.txt /app/requirements.txt
+
+# switch working directory
 WORKDIR /app
-RUN adduser --disabled-password python
-USER python
 
-# Copy Python dependencies file and install dependencies
-COPY requirements.txt .
+# install the dependencies and packages in the requirements file
+RUN pip install -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
+# copy every content from the local file to the image
+COPY . /app
 
-# Copy Flask application
-COPY . .
-
-CMD ["gunicorn", "--bind 0.0.0.0:9090 wsgi:app"]
+# configure the container to run in an executed manner
+ENTRYPOINT [ "python" ]
+CMD ["weather_app.py" ]
