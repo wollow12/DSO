@@ -36,10 +36,10 @@ jobs:
             echo "$GITLAB_TOKEN" | docker login registry.gitlab.com -u 44kpuk44 --password-stdin
             docker build -t registry.gitlab.com/44kpuk44/circleci:$TAG .
             docker push registry.gitlab.com/44kpuk44/circleci:$TAG
-#  test: # this can be any name you choose
-#    executor: python/default # use the default executor defined within the orb
+#  test:  this can be any name you choose
+#    executor: python/default  use the default executor defined within the orb
 #    steps:
-#      - checkout # checkout source code
+#      - checkout  checkout source code
 #      - python/install-packages:
 #         pkg-manager: pip
 #      - run:
@@ -48,7 +48,7 @@ jobs:
 #      - persist_to_workspace:
 #          root: ~/project
 #          paths:
-            - .
+#            - .
 workflows:
   build_test_deploy:
     jobs:
