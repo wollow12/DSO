@@ -23,7 +23,12 @@ jobs:
           name: Run Docker image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
-            docker run -d -it -p 5000:5000 --name app $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG 
+            docker run -d -it -p 5000:5000 --name app $DOCKERHUB_USERNAME/circleci-new-docker-example:$TAG
+      - run:
+          name: Run test image
+          command: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
+            docker exec -it app ./app/check_webapp_reachability.py
       - run:
           name: Push to GITLAB
           command: |
@@ -31,23 +36,23 @@ jobs:
             echo "$GITLAB_TOKEN" | docker login registry.gitlab.com -u 44kpuk44 --password-stdin
             docker build -t registry.gitlab.com/44kpuk44/circleci:$TAG .
             docker push registry.gitlab.com/44kpuk44/circleci:$TAG
-  test: # this can be any name you choose
-    executor: python/default # use the default executor defined within the orb
-    steps:
-      - checkout # checkout source code
-      - python/install-packages:
-         pkg-manager: pip
-      - run:
-          name: Run tests
-          command: python check_webapp_reachability.py
-      - persist_to_workspace:
-          root: ~/project
-          paths:
+#  test: # this can be any name you choose
+#    executor: python/default # use the default executor defined within the orb
+#    steps:
+#      - checkout # checkout source code
+#      - python/install-packages:
+#         pkg-manager: pip
+#      - run:
+#          name: Run tests
+#          command: python check_webapp_reachability.py
+#      - persist_to_workspace:
+#          root: ~/project
+#          paths:
             - .
 workflows:
   build_test_deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+#      - test:
+#          requires:
+#            - build
