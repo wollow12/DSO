@@ -4,7 +4,7 @@ import requests
 
 class TestWebsiteReachability(unittest.TestCase):
     def test_website_reachable(self):
-        url = 'http://app:5000/'
+        url = 'http://app/'
 
         try:
             response = requests.get(url)
